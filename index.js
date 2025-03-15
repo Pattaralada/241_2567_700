@@ -154,4 +154,3 @@ const submitData = async () => {
         messageDOM.className = 'message danger';
     }
 }
-
