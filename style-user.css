@@ -9,14 +9,36 @@ body {
     font-family: 'Kanit';
 }
 
-.container {
-    width: 100%;
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #FBF5DD;
-    padding: 20px;
+/* ปรับสไตล์ของตาราง */
+table {
+    width: 70%; /* กำหนดความกว้างของตารางเป็น 70% ของหน้าจอ */
+    margin: 20px auto; /* จัดให้ตารางอยู่กลางหน้า */;
+    border-collapse: collapse; /* ลบเส้นขอบของเซลล์ */
+    border-radius: 5px;
     box-sizing: border-box;
+}
+
+/* ปรับขนาดและสีของหัวข้อคอลัมน์ */
+th, td {
+    padding: 12px 20px;
+    text-align: center;
+    border: 3px solid #56021F;
+}
+
+/* เปลี่ยนสีพื้นหลังของแถวหัวข้อ */
+th {
+    background-color: #F37199;
+    color: white;
+}
+
+/* เปลี่ยนสีพื้นหลังของแถวเมื่อ hover */
+tr:hover {
+    background-color: #DEAC80;
+}
+
+tbody tr {
+    background-color: #FBF5DD;
+    color: #56021F;
 }
 
 .button-User {
@@ -28,6 +50,7 @@ body {
     text-decoration: none; /* ลบการตกแต่งลิงก์ (ขีดเส้นใต้) */
     border-radius: 5px; /* ขอบโค้ง */
     font-size: 16px;
+    margin-bottom: 20px;
 }
 
 .button-User:hover {
@@ -35,11 +58,53 @@ body {
 }
 
 .header {
+    width: 70%;
+    margin: 20px auto;
     font-size: 36px;
     text-align: center;
-    margin-bottom: 20px;
     background-color: #F37199;
     border: 2px solid #56021F;
     color: #56021F;
     border-radius: 5px;
+}
+
+/* ปรับให้ตารางมีระยะห่างและไม่เต็มหน้าจอ */
+.container {
+    width: 100%;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+/* ปุ่ม Edit */
+.button-edit {
+    background-color: #AEEA94;
+    color: white;
+    border: 2px solid #3A7D44;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-edit:hover {
+    background-color: #3A7D44;
+}
+
+/* ปุ่ม Delete */
+.button-delete {
+    background-color: #D84040;
+    color: white;
+    border: 2px solid #B82132;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-delete:hover {
+    background-color: #B82132;
 }

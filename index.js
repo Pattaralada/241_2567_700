@@ -52,10 +52,10 @@ window.onload = async () => {
 
 const validateData = (userData) => {
     let errors = [];
-    if (!userData.firstName) {
+    if (!userData.firstname) {
         errors.push('กรุณากรอกชื่อ');
     }
-    if (!userData.lastName) {
+    if (!userData.lastname) {
         errors.push('กรุณากรอกนามสกุล');
     }
     if (!userData.age) {
@@ -123,12 +123,12 @@ const submitData = async () => {
         }
 
         messageDOM.innerText = message
-        messageDOM.className = "message sussess"
+        messageDOM.className = "message success"
 
         const response = await axios.post(`${BASE_URL}/users`, userData)
         console.log('response', response.data);
         messageDOM.innerText = "บันทึกข้อมูลเรียบร้อย"
-        messageDOM.className = "message sussess"
+        messageDOM.className = "message success"
     } catch (error) {
         console.log('error message', error.message);
         console.log('error', error.errors);

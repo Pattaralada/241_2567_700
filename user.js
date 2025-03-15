@@ -8,36 +8,48 @@ window.onload = async () => {
 
 const loadData = async () => {
     console.log('user page loaded');
-    //1.load user ทั้งหมด จาก api ที่เตรียมไว้
     const response = await axios.get(`${BASE_URL}/users`);
     console.log(response.data);
-    const userDOM = document.getElementById('user');
 
-    //2. นำ user ทั้งหมด โหลดกลับเข้าไปใน html
-    let htmlData = '<div>';
+    const userTableBody = document.getElementById('userTableBody');
+    let htmlData = '';
+
     for (let i = 0; i < response.data.length; i++) {
         let user = response.data[i];
-        htmlData += `<div> 
-        ${user.id} ${user.firstname} ${user.lastname}
-        <a href = 'index.html?id=${user.id}'><button >Edit</button></a>
-        <button class='delete' data-id='${user.id}'>Delete</button> 
-        </div>`;
+        htmlData += `
+        <tr>
+            <td>${user.id}</td>
+            <td>${user.firstname}</td>
+            <td>${user.lastname}</td>
+            <td>${user.age}</td>
+            <td>${user.gender}</td>
+            <td>${Array.isArray(user.interests) ? user.interests.join(", ") : user.interests}</td>
+            <td>${user.description || "N/A"}</td>
+            <td>
+                <a href="index.html?id=${user.id}">
+                    <button class="button-edit">Edit</button>
+                </a>
+                <button class="button-delete" data-id="${user.id}">Delete</button>
+            </td>
+        </tr>`;
     }
-    htmlData += '</div>';
-    userDOM.innerHTML = htmlData;
+
+    userTableBody.innerHTML = htmlData;
 
     //3. ลบ user
-    const deleteDOMs = document.getElementsByClassName('delete');
-    for (let i = 0; i < deleteDOMs.length; i++) {
-        deleteDOMs[i].addEventListener('click', async (event) => {
-            //ดึง id ของ user ที่ต้องการลบ
+    document.querySelectorAll('.delete').forEach(button => {
+        button.addEventListener('click', async (event) => {
             const id = event.target.dataset.id;
-            try{
-                await axios.delete(`${BASE_URL}/users/${id}`);
-                loadData(); //recursive function = การเรียกใช้ฟังก์ชันในตัวมันเอง
-            }catch(error){
-                console.log('error',error);
+            const confirmDelete = confirm("คุณต้องการลบผู้ใช้นี้หรือไม่?");
+
+            if (confirmDelete) {
+                try {
+                    await axios.delete(`${BASE_URL}/users/${id}`);
+                    loadData(); // โหลดข้อมูลใหม่
+                } catch (error) {
+                    console.log('error', error);
+                }
             }
         });
-    }
+    });
 }

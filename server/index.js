@@ -32,6 +32,7 @@ app.post('/users', async (req, res) => {
 
     try {
         let user = req.body;
+        user.interests = JSON.stringify(user.interests); // แปลงเป็น JSON string
         const errors = validateData(user)
         if (errors.length > 0) {
             throw {
@@ -58,19 +59,19 @@ app.post('/users', async (req, res) => {
 
 const validateData = (userData) => {
     let errors = [];
-    if (!userData.firstName) {
+    if (!userData.firstname) {
         errors.push('กรุณากรอกชื่อ');
     }
-    if (!userData.lastName) {
+    if (!userData.lastname) {
         errors.push('กรุณากรอกนามสกุล');
     }
-    if (!userData.age) {
-        errors.push('กรุณากรอกอายุ');
+    if (!userData.age || !Number.isInteger(userData.age) || userData.age < 1) {
+        errors.push('กรุณากรอกอายุที่ถูกต้อง');
     }
     if (!userData.gender) {
         errors.push('กรุณาเลือกเพศ');
     }
-    if (!userData.interests) {
+    if (!Array.isArray(userData.interests) || userData.interests.length === 0) {
         errors.push('กรุณาเลือกงานอดิเรก');
     }
     return errors;
@@ -83,14 +84,14 @@ app.get('/users/:id', async (req, res) => {
         const results = await conn.query('SELECT * FROM users WHERE id = ?', id)
 
         if (results[0].length == 0) {
-            throw { stsatusCode: 404, message: 'user not found' }
+            throw { statusCode: 404, message: 'user not found' }
 
         }
         res.json(results[0][0])
 
     } catch (error) {
         console.error('error: ', error.message)
-        let stsatusCode = error.stsatusCode || 500
+        let statusCode = error.statusCode || 500
         res.status(500).json({
             message: 'something went wrong',
             errorMessage: error.message
