@@ -14,6 +14,7 @@ const loadData = async () => {
     const userTableBody = document.getElementById('userTableBody');
     let htmlData = '';
 
+    // ลูปผ่านข้อมูล user และสร้าง HTML ตาราง
     for (let i = 0; i < response.data.length; i++) {
         let user = response.data[i];
         htmlData += `
@@ -34,10 +35,11 @@ const loadData = async () => {
         </tr>`;
     }
 
+    // เพิ่ม HTML เข้าไปใน tbody ของตาราง
     userTableBody.innerHTML = htmlData;
 
     //3. ลบ user
-    document.querySelectorAll('.delete').forEach(button => {
+    document.querySelectorAll('.button-delete').forEach(button => {
         button.addEventListener('click', async (event) => {
             const id = event.target.dataset.id;
             const confirmDelete = confirm("คุณต้องการลบผู้ใช้นี้หรือไม่?");
