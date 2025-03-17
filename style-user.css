@@ -7,14 +7,20 @@
 
 body {
     font-family: 'Kanit';
+    background-image: url('background.jpg'); /* เปลี่ยนเป็นที่อยู่ของรูปภาพ */
+    background-size: cover; /* ปรับให้รูปภาพเต็มจอ */
+    background-position: center; /* จัดตำแหน่งรูปให้อยู่ตรงกลาง */
+    background-repeat: no-repeat; /* ไม่ให้รูปซ้ำ */
+    height: 100vh; /* ความสูงเต็มจอ */
+    margin: 0; /* ไม่มีระยะขอบ */
 }
 
 /* ปรับสไตล์ของตาราง */
 table {
     width: 70%; /* กำหนดความกว้างของตารางเป็น 70% ของหน้าจอ */
     margin: 20px auto; /* จัดให้ตารางอยู่กลางหน้า */;
+    margin-top: 10px;
     border-collapse: collapse; /* ลบเส้นขอบของเซลล์ */
-    border-radius: 5px;
     box-sizing: border-box;
 }
 
@@ -48,12 +54,14 @@ tbody tr {
     color: white;
     text-align: center;
     text-decoration: none; /* ลบการตกแต่งลิงก์ (ขีดเส้นใต้) */
-    border-radius: 5px; /* ขอบโค้ง */
+    border-radius: 20px; /* ขอบโค้ง */
     font-size: 16px;
     margin-bottom: 20px;
+    transition: background-color 0.3s ease-in-out; /* ทำให้สีเปลี่ยนช้า */
 }
 
 .button-User:hover {
+    transform: scale(1.1); /* ขยายขนาดปุ่มเมื่อเอาเมาส์ไปอยู่บนปุ่ม */
     background-color: #F37199; /* เปลี่ยนสีพื้นหลังเมื่อเอาเมาส์ไปอยู่บนปุ่ม */
 }
 
@@ -63,7 +71,7 @@ tbody tr {
     font-size: 36px;
     text-align: center;
     background-color: #F37199;
-    border: 2px solid #56021F;
+    border: 3px solid #56021F;
     color: #56021F;
     border-radius: 5px;
 }
