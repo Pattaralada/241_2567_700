@@ -19,13 +19,13 @@ window.onload = async () => {
             const user = response.data;       
 
             //2. นำข้อมูล user ที่ดึงมา ใส่ใน input ที่มี
-            let firstNameDOM = document.querySelector("input[name=firstname]")
-            let lastNameDOM = document.querySelector("input[name=lastname]")
+            let firstnameDOM = document.querySelector("input[name=firstname]")
+            let lastnameDOM = document.querySelector("input[name=lastname]")
             let ageDOM = document.querySelector("input[name=age]")
             let descriptionDOM = document.querySelector("textarea[name='description']")
 
-            firstNameDOM.value = user.firstname
-            lastNameDOM.value = user.lastname
+            firstnameDOM.value = user.firstname
+            lastnameDOM.value = user.lastname
             ageDOM.value = user.age
             descriptionDOM.value = user.description
 
@@ -71,8 +71,8 @@ const validateData = (userData) => {
 };
 
 const submitData = async () => {
-    let firstNameDOM = document.querySelector("input[name=firstname]");
-    let lastNameDOM = document.querySelector("input[name=lastname]");
+    let firstnameDOM = document.querySelector("input[name=firstname]");
+    let lastnameDOM = document.querySelector("input[name=lastname]");
     let ageDOM = document.querySelector("input[name=age]");
     let genderDOM = document.querySelector("input[name=gender]:checked") || {}
     let interestDOMs = document.querySelectorAll("input[name=interest]:checked") || {}
@@ -90,8 +90,8 @@ const submitData = async () => {
     }
 
     let userData = {
-        firstname: firstNameDOM.value,
-        lastname: lastNameDOM.value,
+        firstname: firstnameDOM.value,
+        lastname: lastnameDOM.value,
         age: ageDOM.value,
         gender: genderDOM.value,
         description: descriptionDOM.value,

@@ -59,10 +59,10 @@ app.post('/users', async (req, res) => {
  
 const validateData = (userData) => {
     let errors = [];
-    if (!userData.firstName) {
+    if (!userData.firstname) {
         errors.push('กรุณากรอกชื่อ');
     }
-    if (!userData.lastName) {
+    if (!userData.lastname) {
         errors.push('กรุณากรอกนามสกุล');
     }
     if (!userData.age) {
@@ -85,7 +85,6 @@ app.get('/users/:id', async (req, res) => {
         
         if (results[0].length == 0) {
             throw { statusCode: 404, message: 'user not found' }
-        
         } 
         res.json(results[0][0])
 
@@ -97,9 +96,7 @@ app.get('/users/:id', async (req, res) => {
             errorMessage: error.message
         })
     }
-
 })
- 
  
 //path: PUT /users/:id สำหรับแก้ไข users รายคน (ตาม id ที่บันทึกเข้าไป)
 app.put('/users/:id', async (req, res) => {
@@ -123,9 +120,7 @@ app.put('/users/:id', async (req, res) => {
             message: 'something went wrong',
             errorMessage: error.message
         })
-    }
-   
-    
+    }   
 })
  
 //path: DELETE /users/:id สำหรับลบ users รายคน (ตาม id ที่บันทึกเข้าไป)
@@ -142,14 +137,14 @@ app.delete('/users/:id', async (req, res) => {
             message: 'Delete user successfully',
             data: results[0]
         })
+
     } catch (error) {
         console.log('error', error.message)
         res.status(error.statusCode || 500).json({
             message: error.message || 'Something went wrong',
             errorMessage: error.message
         })
-    }
-    
+    } 
 })
  
 app.listen(port, async (req, res) => {
