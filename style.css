@@ -27,6 +27,7 @@ body {
     font-weight: bold;
     margin-bottom: 20px;
     margin-top: 20px;
+    margin-left: 20px;
     transition: background-color 0.3s ease-in-out; /* ทำให้สีเปลี่ยนช้า */
 }
 
@@ -44,7 +45,7 @@ body {
     border: 3px solid #854836;
     padding: 20px;
     box-sizing: border-box;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 .header {
@@ -54,7 +55,7 @@ body {
     background-color: #F37199;
     border: 3px solid #56021F;
     color: #56021F;
-    border-radius: 5px;
+    border-radius: 30px;
 }
 
 .header-form {
@@ -74,6 +75,7 @@ body {
 input.form, textarea {
     border: 3px solid #854836;
     width: 100%;
+    border-radius: 20px;
 }
 
 .center {

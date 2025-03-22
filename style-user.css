@@ -57,6 +57,8 @@ tbody tr {
     border-radius: 20px; /* ขอบโค้ง */
     font-size: 16px;
     margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
     transition: background-color 0.3s ease-in-out; /* ทำให้สีเปลี่ยนช้า */
 }
 
@@ -84,7 +86,7 @@ tbody tr {
     margin-right: auto;
     padding: 20px;
     box-sizing: border-box;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
 /* ปุ่ม Edit */
